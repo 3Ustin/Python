@@ -132,9 +132,11 @@ def print_hello_x_or_ten_times(x = 10):
     for num in range(x):
         #print hello world.
         print('Hello')
-#calls 
+#calls print_hello_x_or_ten_times
+#calls print_hello_x_or_ten_times with the parameter of 4.
 print_hello_x_or_ten_times()
 print_hello_x_or_ten_times(4)
+
 
 
 """
