@@ -1,0 +1,21 @@
+</head>
+<style>
+</style>
+<body>
+    <h1>Show Page</h1>
+    <h3>Info Submitted:</h3>
+    <table>
+        <tr>
+            <th>Names</th>
+        </tr>
+        {%for u in users %}
+        <tr>
+                <td>{{u['first_name']}}</td>
+                <td>{{u['last_name']}}</td>
+                <td>{{u['first_name']}}{{u['last_name']}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+
+</html>
