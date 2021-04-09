@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+    <title>Forms</title>
+</head>
+<style>
+</style>
+<body>
+    <h1>Show Page</h1>
+    <h3>Info Submitted:</h3>
+    <table>
+        <tr>
+            <th>First</th>
+            <td>{{name0}}</td>
+            <td>{{name1}}</td>
+            <td>{{name2}}</td>
+            <td>{{name3}}</td>
+        </tr>
+        <tr>
+            <th>Last</th>
+            <td>{{last0}}</td>
+            <td>{{last1}}</td>
+            <td>{{last2}}</td>
+            <td>{{last3}}</td>
+        </tr>
+        <tr>
+            <th>Full</th>
+            <td>{{name0}}{{last0}}</td>
+            <td>{{name1}}{{last1}}</td>
+            <td>{{name2}}{{last2}}</td>
+            <td>{{name3}}{{last3}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>
