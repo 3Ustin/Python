@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+    <title>Forms</title>
+</head>
+<style>
+
+</style>
+<body>
+    <div class = "row0">
+        <h1>Your Gold: </h1>
+        <h3 class = "goldBox"></h3>
+    </div>
+    <form action='/users' method='post'>
+    Name: <input type='text' name='name0'>
+    Last: <input type='text' name='last0'>
+    Name: <input type='text' name='name1'>
+    Last: <input type='text' name='last1'>
+    Name: <input type='text' name='name2'>
+    Last: <input type='text' name='last2'>
+    Name: <input type='text' name='name3'>
+    Last: <input type='text' name='last3'>
+    <input type='submit' value='create user'>
+    </form>
+</body>
+
+</html>

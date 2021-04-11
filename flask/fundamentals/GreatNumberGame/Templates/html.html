@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Counter</title>
+</head>
+<body>
+<div style = "text-align: center">
+    <h1>This is the Great Number Game!</h1>
+    <h2>Guess a number and the box changes.</h2>
+    <p>Orange means too high.</p>
+    <p>Purple means too low.</p>
+    <p>Green means just right!</p>
+</div>
+
+<h1 style="
+    background-color: grey;
+    color:black;
+    display:flex;
+    text-align: center;
+    align-items: center;
+    margin: 25px auto;
+    height: fit-content;
+    width: fit-content;">
+    Guess!
+    </h1>
+    <form action='/main' method='post'>
+    <input type='text' name='guess'>
+    <input type='submit' value='create user'>
+    </form>
+</body>
+</html>
