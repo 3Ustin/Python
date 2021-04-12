@@ -5,27 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
-    <title>Forms</title>
+    <title>NinjaGold</title>
 </head>
 <style>
 
 </style>
 <body>
-    <div class = "row0">
-        <h1>Your Gold: </h1>
-        <h3 class = "goldBox"></h3>
+    <div class = "moneyRow">
+        <h1 class = "yourGold"> Your Gold: </h1>
+        <div class = "goldBox"> {{session['gold_amount']}} </div>
     </div>
-    <form action='/users' method='post'>
-    Name: <input type='text' name='name0'>
-    Last: <input type='text' name='last0'>
-    Name: <input type='text' name='name1'>
-    Last: <input type='text' name='last1'>
-    Name: <input type='text' name='name2'>
-    Last: <input type='text' name='last2'>
-    Name: <input type='text' name='name3'>
-    Last: <input type='text' name='last3'>
-    <input type='submit' value='create user'>
-    </form>
-</body>
+    <!-- This is the four box choices -->
+    <div class = "options">
+        <div class = "farm">
+            <h4>Farm</h4>
+            <p>(earns 10-20 gold)</p>
+            <form action='/process_money' method='post'>
+                <input type="hidden" name="action" value="farm">
+                <input class = "button" type='submit' value='find Gold!'>
+            </form>
+        </div>
+        <div class = "Cave">
+            <h4>woods</h4>
+            <p>(earns 5-10 gold)</p>
+            <form action='/process_money' method='post'>
+                <input type="hidden" name="action" value="woods">
+                <input class = "button" type='submit' value='find Gold!'>
+            </form>
+        </div>
+        <div class = "House">
+            <h4>bank</h4>
+            <p>(earns 2-5 gold)</p>
+            <form action='/process_money' method='post'>
+                <input type="hidden" name="action" value="bank">
+                <input class = "button" type='submit' value='find Gold!'>
+            </form>
+        </div>
+        <div class = "Casino">
+            <h4>casino</h4>
+            <p>(earns/takes 0-50 gold)</p>
+            <form action='/process_money' method='post'>
+                <input type="hidden" name="action" value="casino">
+                <input class = "button" type='submit' value='find Gold!'>
+            </form>
+        </div>
+    </div>
 
+    <div class = "activities">
+        <p>Activities</p>
+        <div>
+            <ul>
+                {% for act in activities  %}
+                    <li>{{act}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+    </div>
+</body>
 </html>

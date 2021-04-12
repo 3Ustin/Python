@@ -1,7 +1,18 @@
-.row0{
+.moneyRow{
     display: flex;
+    flex-direction: row;
 }
 .goldBox{
+    background-color: aqua;
     border: 5px;
     border-radius: 10px;
+}
+.yourGold{
+}
+.button{
+    width: 100px;
+    height: 100px;
+}
+.options{
+    display: flex;
 }
