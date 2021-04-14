@@ -1,0 +1,49 @@
+-- 1 --
+-- Why does countries.name pullable from languages.
+SELECT countries.name, languages.language, languages.percentage FROM languages
+-- Join the tables on their id's.
+JOIN countries ON country_id = countries.id
+-- Selects only ROWS that have a language = "Slovene"
+WHERE languages.language = "Slovene"
+-- This just orders by a variable in a direction.
+ORDER BY languages.percentage DESC;
+
+-- 3--
+-- Grabbing info from cities because cities is a many to one relationship, and has the foreign country_id.
+Select countries.name, cities.name, cities.population FROM cities
+-- Joining countries to cities using countries id lining up with country_id. 
+JOIN countries ON country_id = countries.id
+-- The logic to which ROWS we are grabbing. Only grab rows that have these logical parameters.
+WHERE cities.population > 500000 AND countries.name = "Mexico"
+-- ordering by organization.
+ORDER BY cities.population DESC;
+
+-- 4 --
+SELECT countries.name, languages.language, languages.percentage FROM languages
+JOIN countries ON country_id = countries.id
+WHERE languages.percentage > 89
+ORDER BY languages.percentage DESC;
+
+-- 6 --
+SELECT countries.capital, countries.name, countries.government_form, countries.life_expectancy FROM countries
+WHERE countries.government_form = "Constitutional Monarchy" AND countries.capital > 200 AND countries.life_expectancy >75;
+
+-- 5 --
+SELECT countries.surface_area, countries.population FROM countries
+WHERE countries.population > 100000 AND countries.surface_area < 501;
+
+-- 7 --
+SELECT countries.name, cities.country_code, cities.district, cities.population FROM cities
+JOIN countries ON country_id = countries.id
+WHERE cities.population > 500000 AND cities.district = "Buenos Aires";
+
+-- 8 --
+SELECT countries.region, Count(*) AS countries_num, countries.name FROM countries
+GROUP BY countries.region
+ORDER BY countries_num DESC;
+
+-- 2 --
+SELECT countries.name, Count(*) AS cities_num FROM cities
+JOIN countries ON country_id = countries.id
+Group BY countries.name
+ORDER BY cities_num DESC;
