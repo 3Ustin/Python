@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>htmlStuff</title>
+</head>
+<body>
+    <div class = "box">
+        {% for person in friends %}
+            <p>ID: {{person["id"]}}</p>
+            <p>first_name: {{person["first_name"]}}</p>
+            <p>last_name: {{person["last_name"]}}</p>
+            <p>email: {{person["email"]}}</p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

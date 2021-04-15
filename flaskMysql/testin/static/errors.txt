@@ -1,0 +1,11 @@
+TypeError: __init__() got an unexpected keyword argument 'pasrd'
+
+  File "C:\Users\3usti\Desktop\BootCamp ISA\Python\flaskMysql\testin\mysqlconnection.py", line 18
+    with as cursor:
+          ^
+SyntaxError: invalid syntax
+
+  File "C:\Users\3usti\Desktop\BootCamp ISA\Python\flaskMysql\testin\mysqlconnection.py", line 34
+    except Exception as
+                       ^
+SyntaxError: invalid syntax
