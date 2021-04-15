@@ -14,7 +14,13 @@
             <p>first_name: {{person["first_name"]}}</p>
             <p>last_name: {{person["last_name"]}}</p>
             <p>email: {{person["email"]}}</p>
+            <div>
+                <a href = "/show_person/{{person["id"]}}">show<a/> | <a href = "/edit/{{person["id"]}}">edit<a/> | <a href = "/delete_friend/{{person["id"]}}">delete<a/>
+            </div>
         {% endfor %}
+    </div>
+    <div>
+        <a href = "/form">Add_User<a/>
     </div>
 </body>
 

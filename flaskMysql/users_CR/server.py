@@ -13,6 +13,50 @@ def index():
 def form():
     return render_template("read.html")
 
+@app.route("/delete_friend/<user_num>")
+def delete(user_num):
+    mysql = connectToMySQL('users_schema')
+    query = 'DELETE FROM users WHERE id = %(user_num)s;'
+    data = {
+        "user_num": user_num
+    }
+    users = mysql.query_db(query,data)
+    print(users)
+    return redirect("/")
+
+@app.route("/show_person/<int:id>")
+def person(id):
+    mysql = connectToMySQL('users_schema')
+    query = 'SELECT * FROM users WHERE id = %(id)s;'
+    data = {
+        "id": id
+    }
+    users = mysql.query_db(query,data)
+    return render_template("individual.html", user = users[0])
+
+@app.route("/edit/<int:id>")
+def edit(id):
+    mysql = connectToMySQL('users_schema')
+    query = 'SELECT * FROM users WHERE id = %(id)s;'
+    data = {
+        "id": id
+    }
+    users = mysql.query_db(query,data)
+    return render_template("edit.html", user = users[0])
+
+@app.route("/edit_person/<int:id>", methods = ["POST"])
+def edit_person(id):
+    mysql = connectToMySQL('users_schema')
+    query = 'UPDATE users SET first_name = %(fn)s,last_name = %(ln)s,email = %(em)s WHERE id = %(id)s;'
+    data = {
+        "fn": request.form["fname"],
+        "ln": request.form["lname"],
+        "em": request.form["email"],
+        "id": id
+    }
+    mysql.query_db(query,data)
+    return redirect("/")
+
 @app.route("/create_friend", methods = ["POST"])
 def add_friend_to_db():
     mysql = connectToMySQL('users_schema')
