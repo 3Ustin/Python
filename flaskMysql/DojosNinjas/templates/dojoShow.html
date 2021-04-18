@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dojo Show</title>
+</head>
+<body>
+<h1>{{dojos.name}}</h1>
+    <div class = "box">
+        {% for ninja in ninjas %}
+            <p>{{ninja["id"]}}</p>
+            <div>
+                <a href = "/show_dojo/{{ninja["id"]}}"><a/> 
+            </div>
+        {% endfor %}
+    </div>
+    <a href = "/">Home<a/>
+</body>
+
+</html>

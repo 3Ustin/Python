@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Authors</title>
+</head>
+<body>
+<!-- Books form for add book -->
+    <div class = "box">
+        <h1>New Books</h1>
+        <form action="/books/add" method="POST">
+            <p>Title: <input type="text" name="title"></p>
+            <p>Page Numbers: <input type="text" name="numPages"></p>
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+<!-- list of all the books  -->
+    <div class = "box">
+        <h3>All Books<h3>
+        {% for book in books%}
+            <p>{{book["title"]}}</p>
+        {% endfor %}
+    </div>
+<!-- Home link  -->
+    <div>
+        <a href = "/">Home<a/>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Authors</title>
+</head>
+<body>
+
+<!-- list of all Authors  -->
+    <div class = "box">
+        <h3>Author's Favs<h3>
+        {% for favOfAuthor in favJoin %}
+            <p>{{favOfAuthor["title"]}}</p>
+            <p>{{favOfAuthor["num_of_pages"]}}</p>
+        {% endfor %}
+    </div>
+<!-- authors form for adding Favorites -->
+    <div class = "box">
+        <h1>Add Author's Favorite</h1>
+        <div>
+            <p>Book:</p>
+            <form action="/authors/add/favorite/{{id}}" method="POST">
+                <input type = "hidden" name="" value="{{}}"
+                <select name = "book">
+                {% for book in books %}
+                    <option name = "{{book.id}}">{{book["title"]}}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Add favorite Book">
+            </form>
+        </div>
+    </div>
+<!-- books link  -->
+    <div>
+        <a href = "/books">Add Book<a/>
+    </div>
+</body>
+
+</html>
