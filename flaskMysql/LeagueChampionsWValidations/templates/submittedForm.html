@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>League Form</title>
+</head>
+<body>
+
+<!-- list of all Authors  -->
+    <div class = "box">
+        <h3>champions<h3>
+            <p>{{champion["Champion"]}}</p>
+            <p>{{champion["name"]}}</p>
+            <p>{{champion["roles.name"]}}</p>
+            <p>{{champion["timesPlayed"]}}</p>
+            <p>{{champion["ReasonIPlay"]}}</p>
+        <div>
+            <a href = "/">Submit Another<a/>
+        </div>
+    </div>
+<!-- books link  -->
+
+</body>
+
+</html>
