@@ -12,6 +12,7 @@
     <div class = "navbar">
         <div class = "navbarLeft">
             <a href = "/" class = "navbarLeftHome">Home</a>
+            <!--Currently a non working link-->
             <a href = "/champion/" class = "navbarLeftChampions">Champions</a>
 
         </div>
@@ -22,28 +23,13 @@
     </div>
 <!-- authors form for adding Favorites -->
     <div class = "box">
-        <h1>Add Champion to Database</h1>
+        <h1>Log In To Your Account</h1>
         <div>
-            <p>Enter a Champion</p>
+            <p>Enter Credentials</p>
             <form action="/champion/" method="POST">
-                <p> Name of Champion: <input type="text" name="champion"></p>
-                <p> Champion Role: 
-                    <select name = "role_id">
-                        {% for role in roles %}
-                            <option value = {{role["id"]}}>{{role["name"]}}</option>
-                        {% endfor %}
-                    </select>
-                </p>
-                <p> Times Played:  <input type="text" name="timesPlayed"></p>
-                <p> Category: 
-                    <select name = "category_id">
-                        {% for category in categories %}
-                            <option value = {{category["id"]}}>{{category["name"]}}</option>
-                        {% endfor %}
-                    </select>
-                </p>
-                <p> Reason I Play:  <input type="text" name="ReasonIPlay"></p>
-                <input type="submit" value="Commit Champion">
+                <p> Username: <input type="text" name="username"></p>
+                <p> Password:  <input type="text" name="password"></p>
+                <input type="submit" value="Login">
             </form>
             <!-- CHECKING TO SEE IF VALIDATIONS WERE TRIGGERED!! -->
             {% with messages = get_flashed_messages() %}

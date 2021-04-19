@@ -22,28 +22,15 @@
     </div>
 <!-- authors form for adding Favorites -->
     <div class = "box">
-        <h1>Add Champion to Database</h1>
+        <h1>Register To Get a Champion List</h1>
         <div>
-            <p>Enter a Champion</p>
-            <form action="/champion/" method="POST">
-                <p> Name of Champion: <input type="text" name="champion"></p>
-                <p> Champion Role: 
-                    <select name = "role_id">
-                        {% for role in roles %}
-                            <option value = {{role["id"]}}>{{role["name"]}}</option>
-                        {% endfor %}
-                    </select>
-                </p>
-                <p> Times Played:  <input type="text" name="timesPlayed"></p>
-                <p> Category: 
-                    <select name = "category_id">
-                        {% for category in categories %}
-                            <option value = {{category["id"]}}>{{category["name"]}}</option>
-                        {% endfor %}
-                    </select>
-                </p>
-                <p> Reason I Play:  <input type="text" name="ReasonIPlay"></p>
-                <input type="submit" value="Commit Champion">
+            <p>We keep it Secret, We keep it Safe</p>
+            <form action="/register/checking" method="POST">
+                <p> Username: <input type="text" name="username"></p>
+                <p> Password: <input type="text" name="password"></p>
+                <p> Confirm Password: <input type="text" name="confirmPassword"></p>
+                <p> Email: <input type="text" name="email"></p>
+                <input type="submit" value="Register">
             </form>
             <!-- CHECKING TO SEE IF VALIDATIONS WERE TRIGGERED!! -->
             {% with messages = get_flashed_messages() %}
@@ -60,5 +47,4 @@
         </div>
     </div>
 </body>
-
 </html>

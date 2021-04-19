@@ -61,8 +61,55 @@ def showingSubmittedChampionForm(champion_id):
     champion = mysql.query_db(query,data)
     return render_template("submittedForm.html", champion = champion[0])
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
+@app.route("/login/checking", methods = ["POST"])
+def loginChecking():
+    # starting with true assumption, then proceeding to check that assumption. 
+    is_Valid = True
+    if len(request.form['username']) < 1:
+        is_Valid = False
+    if len(request.form['password']) < 1:
+        is_Valid = False
 
+    #If NOT all tests fail, reroute back to origin, and claim error.
+    if not is_Valid:
+        flash("Login values missing.")
+        return redirect("/login")
+    #the rest of our code for a succsessfull validation goes here.
+    else:
+        #This is dedicated space for the login process.
+        #TODO: Make Registration
+        
+        return redirect(f"/champion/show/{champion_id}")
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/register/checking", methods = ["POST"])
+def registerChecking():
+    # starting with true assumption, then proceeding to check that assumption. 
+    is_Valid = True
+    if len(request.form['username']) < 1:
+        is_Valid = False
+    if len(request.form['password']) < 1:
+        is_Valid = False
+    if len(request.form['email']) < 1:
+        is_Valid = False
+
+    #If NOT all tests fail, reroute back to origin, and claim error.
+    if not is_Valid:
+        flash("Login values missing.")
+        return redirect("/register")
+    #the rest of our code for a succsessfull validation goes here.
+    else:
+        #This is dedicated space for the login process.
+        #TODO: Make Registration
+        
+        return redirect(f"/champion/show/{champion_id}")
 
 
 
