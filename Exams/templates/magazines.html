@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>League Form</title>
+</head>
+<body>
+<!-- navbar -->
+    <div class = "navbar">
+        <div>
+            <a href = "/magazine_add">add Magazine<a/>
+            <a href = "/userPage">Account<a/>
+            <a href = "/dashboard">Dashboard<a/>
+        </div>
+        <div class = "navbarRight">
+            <a href= "/logout" class = "navbarRightRegister">Logout</a>
+        </div>
+    </div>
+<!-- list of all Authors  -->
+    <div class = "box">
+        <h2>{{magazine['title']}}</h2>
+        <p>Added by {{firstname}}  {{lastname}}</p>
+        <p>Description:</p>
+        <p>{{magazine["description"]}}</p>
+    </div>
+    <div class = "box">
+        <h2>Subscriptions</h2>
+        {% for sub in subs %}
+            <p>{{sub['firstname'] + " " + sub['lastname']}}</p>
+        {% endfor %}
+    </div>
+<!-- books link  -->
+
+</body>
+
+</html>
