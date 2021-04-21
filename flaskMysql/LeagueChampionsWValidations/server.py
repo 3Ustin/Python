@@ -1,9 +1,13 @@
 from flask import Flask, render_template, redirect, request,flash, session
 from mysqlconnection import connectToMySQL
+from flask_bcrypt import Bcrypt
+import re
 
 # import the function that will return an instance of a connection
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 app.secret_key = "keep it secret, keep it safe"
+EMAIL_REGEX = re.compile(r'[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 # This route 
 @app.route("/")
@@ -81,9 +85,14 @@ def loginChecking():
     #the rest of our code for a succsessfull validation goes here.
     else:
         #This is dedicated space for the login process.
-        #TODO: Make Registration
-        
-        return redirect(f"/champion/show/{champion_id}")
+        pw_hash = bcrypt.generate_password_hash(request.form['password'])
+        mysql = connectToMySQL('leaguechampionlog')
+        query = 'SELECT * from users;'
+        isRegistered = mysql.query_db(query)
+        for register in isRegistered:
+            if register['username'] == request.form['username'] and bcrypt.check_password_hash(register['password'],request.form['password']):
+                return redirect("/")
+        return redirect("/login")
 
 @app.route("/register")
 def register():
@@ -97,7 +106,11 @@ def registerChecking():
         is_Valid = False
     if len(request.form['password']) < 1:
         is_Valid = False
+    if not EMAIL_REGEX.match(str(request.form['email'])):
+        is_Valid = False
     if len(request.form['email']) < 1:
+        is_Valid = False
+    if request.form['password'] != request.form['confirmPassword']:
         is_Valid = False
 
     #If NOT all tests fail, reroute back to origin, and claim error.
@@ -107,9 +120,16 @@ def registerChecking():
     #the rest of our code for a succsessfull validation goes here.
     else:
         #This is dedicated space for the login process.
-        #TODO: Make Registration
+        pw_hash = bcrypt.generate_password_hash(request.form['password'])
+        mysql = connectToMySQL('leaguechampionlog')
+        query = 'INSERT INTO users (username, password, created_at, updated_at) VALUES (%(username)s,%(password_hash)s,NOW(),NOW());'
+        data = {
+            "username" : request.form['username'],
+            "password_hash" : pw_hash
+        }
+        isRegistered = mysql.query_db(query,data)
         
-        return redirect(f"/champion/show/{champion_id}")
+        return redirect("/register")
 
 
 
